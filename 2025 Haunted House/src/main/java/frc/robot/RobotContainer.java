@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.SolenoidMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -21,9 +22,11 @@ public class RobotContainer {
   private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
   private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
 
+  private final SolenoidMech kiessMech;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the trigger bindings
+    kiessMech = new SolenoidMech(pcm2.makeSolenoid(3), 3, 5);
   }
 
 
