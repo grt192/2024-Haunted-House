@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.MeniMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -18,13 +19,16 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // PCM1 is floor 1 of haunted house, PCM2 is floor 2
-  private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
-  private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
+    private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
+    private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-    // Configure the trigger bindings
-  }
+    private final MeniMech meniMech;
+
+    /** The container for the robot. Contains subsystems, OI devices, and commands. */
+    public RobotContainer() {
+        meniMech = new MeniMech(pcm1.makeSolenoid(3), pcm1.makeSolenoid(4));
+
+    }
 
 
 }
