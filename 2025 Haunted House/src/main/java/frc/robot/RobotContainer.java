@@ -27,7 +27,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    erinMech = new SolenoidMech(pcm1.makeSolenoid(0), 1, 3, 1);
+    erinMech = new SolenoidMech(pcm1.makeSolenoid(5), 1, 3, 1);
 
   }
 
