@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.ErinMech;
 import frc.robot.subsystems.SolenoidMech;
 import frc.robot.Constants.OperatorConstants;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
@@ -22,13 +23,12 @@ public class RobotContainer {
   private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
   private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
   
-  private final SolenoidMech erinMech; 
+  private final ErinMech erinMech; 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    erinMech = new SolenoidMech(pcm1.makeSolenoid(5), 1, 3, 1);
-
+    erinMech = new ErinMech(pcm1.makeSolenoid(5));
   }
 
 
