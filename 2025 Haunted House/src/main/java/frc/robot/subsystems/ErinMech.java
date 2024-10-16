@@ -15,6 +15,7 @@ public class ErinMech extends SubsystemBase{
     DoublePublisher audioPub;
 
     private boolean out;
+    private boolean soundstarted;
 
     private Timer solenoidTimer;
 
@@ -27,22 +28,26 @@ public class ErinMech extends SubsystemBase{
         solenoidTimer = new Timer();
 
         out = false;
+        soundstarted = false;
 
         solenoidTimer.start();
     }
 
     public void periodic() {
-        if (solenoidTimer.hasElapsed(13)){
+        if (solenoidTimer.hasElapsed(13) && (soundstarted == false)){
             audioPub.set(1.0);
+            soundstarted = true;
         }
         if (solenoidTimer.hasElapsed(15) && (out == false)){
             creeperSolenoid.set(true);
+            audioPub.set(2.0);
             out = true;
         }
         if (solenoidTimer.advanceIfElapsed(17) && (out == true)){
             creeperSolenoid.set(false);
             audioPub.set(0.0);
             out = false;
+            soundstarted = false;
         }
 
     }
