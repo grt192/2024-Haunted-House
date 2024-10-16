@@ -25,7 +25,7 @@ while True:
     if trigger_value == 1.0:
         # creeper hiss plays, AND THEN the actual explosion plays
         sound1.play()
-    if trigger_vaue == 2.0:
+    if trigger_value == 2.0:
         sound2.play()
 
 
