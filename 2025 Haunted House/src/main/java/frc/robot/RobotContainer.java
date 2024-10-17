@@ -4,12 +4,9 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.SolenoidMech;
+import frc.robot.subsystems.TanmayMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -24,7 +21,8 @@ public class RobotContainer {
   private final int tanmayPort = 1;
 
   //Front Porch, using PCM1
-  private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
+  // private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
+  private final TanmayMech tanmayMech = new TanmayMech(pcm1.makeSolenoid(tanmayPort));
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
