@@ -17,15 +17,17 @@ audio_table = NetworkTables.getTable("audio")
 pygame.mixer.init()
 sound1 = pygame.mixer.Sound('creeper') 
 sound2 = pygame.mixer.Sound('explode') 
+sound3 = pygame.mixer.Sound('amongus.mp3')
 
 while True:
     trigger_value = audio_table.getNumber("trigger_audio", -1.0)
     print("trigger:", trigger_value)
     
     if trigger_value == 1.0:
-        # creeper hiss plays, AND THEN the actual explosion plays
         sound1.play()
     if trigger_value == 2.0:
         sound2.play()
+    if trigger_value == 3.0:
+        sound3.play()
 
 
