@@ -6,7 +6,6 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.SolenoidMech;
-import frc.robot.Constants.SolenoidPorts;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -24,7 +23,7 @@ public class RobotContainer {
   private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
 
   //Left Bottom Window, using PCM1
-  private final SolenoidMech meniMech = new SolenoidMech(
+  private final SolenoidMech hamzaMech = new SolenoidMech(
     pcm1.makeSolenoid(2), 2, 5);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
