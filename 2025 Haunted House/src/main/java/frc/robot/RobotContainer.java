@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.ErinMech;
+import frc.robot.subsystems.SolenoidMech;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.SolenoidMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
@@ -21,14 +23,16 @@ public class RobotContainer {
   // PCM1 is floor 1 of haunted house, PCM2 is floor 2
   private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
   private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
-  private final int tanmayPort = 1;
 
   //Front Porch, using PCM1
-  private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
+  private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(1), 5, 5);
+  
+  private final ErinMech erinMech; 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
+    erinMech = new ErinMech(pcm1.makeSolenoid(5));
   }
 
 
