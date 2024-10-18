@@ -15,12 +15,13 @@ public class TanmayMech extends SubsystemBase{
     DoublePublisher audioPub;
 
     private boolean out;
+    private boolean soundplayed;
+    private boolean set0;
 
     private Timer solenoidTimer;
 
     private double upTime = 5;
     private double downTime = 5;
-    private double timeUntilNextEvent = 0;
 
     public TanmayMech(Solenoid creeperSolenoid) {
         this.creeperSolenoid = creeperSolenoid;
@@ -31,23 +32,25 @@ public class TanmayMech extends SubsystemBase{
         solenoidTimer = new Timer();
 
         
+        set0 = false;
         out = false;
 
         solenoidTimer.start();
     }
 
     public void periodic() {
-        if (solenoidTimer.advanceIfElapsed(timeUntilNextEvent)){
-            out = !out;
+        if (solenoidTimer.hasElapsed(2) && (out == false)){
+            out = true;
             creeperSolenoid.set(out);
-            if(out == true){
-                audioPub.set(3.0);
-                audioPub.set(0.0);
-                timeUntilNextEvent = downTime;
-            }
-            else{
-                timeUntilNextEvent = upTime;
-            }
+            audioPub.set(3.0);
+        }
+        if (solenoidTimer.hasElapsed(4) && (out == true)){
+            audioPub.set(0);
+            out = false;
+            creeperSolenoid.set(out);
+        }
+        if (solenoidTimer.advanceIfElapsed(17)){
+            out = false;
         }
     }
     

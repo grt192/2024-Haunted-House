@@ -7,26 +7,30 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ErinMech extends SubsystemBase{
+public class ErinandTanmayMech extends SubsystemBase{
     private Solenoid creeperSolenoid;
+    private Solenoid amongusSolenoid;
     
     NetworkTableInstance inst;
     NetworkTable table;
     DoublePublisher audioPub;
 
     private boolean out;
+    private boolean outT;
     private boolean soundstarted;
 
     private Timer solenoidTimer;
 
-    public ErinMech(Solenoid creeperSolenoid) {
+    public ErinandTanmayMech(Solenoid creeperSolenoid, Solenoid amongusSolenoid) {
         this.creeperSolenoid = creeperSolenoid;
+        this.amongusSolenoid = amongusSolenoid;
 
         inst = NetworkTableInstance.getDefault();
         table = inst.getTable("audio");
         audioPub = table.getDoubleTopic("trigger_audio").publish();
         solenoidTimer = new Timer();
 
+        outT = false;
         out = false;
         soundstarted = false;
 
@@ -34,6 +38,16 @@ public class ErinMech extends SubsystemBase{
     }
 
     public void periodic() {
+        // if (solenoidTimer.hasElapsed(2) && (outT == false)){
+        //     outT = true;
+        //     creeperSolenoid.set(outT);
+        //     audioPub.set(3.0);
+        // }
+        // if (solenoidTimer.hasElapsed(4) && (outT == true)){
+        //     audioPub.set(0.0);
+        //     outT = false;
+        //     creeperSolenoid.set(outT);
+        // }
         if (solenoidTimer.hasElapsed(13) && (soundstarted == false)){
             audioPub.set(1.0);
             soundstarted = true;
@@ -43,10 +57,11 @@ public class ErinMech extends SubsystemBase{
             audioPub.set(2.0);
             out = true;
         }
-        if (solenoidTimer.advanceIfElapsed(17) && (out == true)){
+        if (solenoidTimer.advanceIfElapsed(18)){
             creeperSolenoid.set(false);
             audioPub.set(0.0);
             out = false;
+            outT = false;
             soundstarted = false;
         }
 

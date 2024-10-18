@@ -5,7 +5,7 @@
 package frc.robot;
 
 import frc.robot.subsystems.TanmayMech;
-import frc.robot.subsystems.ErinMech;
+import frc.robot.subsystems.ErinandTanmayMech;
 import frc.robot.subsystems.SolenoidMech;
 import frc.robot.Constants.OperatorConstants;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
@@ -23,14 +23,12 @@ public class RobotContainer {
 
   //Front Porch, using PCM1
   // private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
-  private final TanmayMech tanmayMech;
-  private final ErinMech erinMech; 
+  private final ErinandTanmayMech erinandtanmayMech; 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
-    erinMech = new ErinMech(pcm1.makeSolenoid(5));
-    tanmayMech = new TanmayMech(pcm1.makeSolenoid(1));
+    erinandtanmayMech = new ErinandTanmayMech(pcm1.makeSolenoid(5), pcm1.makeSolenoid(1));
   }
 
 
