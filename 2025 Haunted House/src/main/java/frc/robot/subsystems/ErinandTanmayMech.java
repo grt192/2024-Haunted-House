@@ -17,6 +17,7 @@ public class ErinandTanmayMech extends SubsystemBase{
 
     private boolean out;
     private boolean outT;
+    private boolean start;
     private boolean soundstarted;
 
     private Timer solenoidTimer;
@@ -32,22 +33,24 @@ public class ErinandTanmayMech extends SubsystemBase{
 
         outT = false;
         out = false;
+        start = false;
         soundstarted = false;
 
         solenoidTimer.start();
     }
 
     public void periodic() {
-        // if (solenoidTimer.hasElapsed(2) && (outT == false)){
-        //     outT = true;
-        //     creeperSolenoid.set(outT);
-        //     audioPub.set(3.0);
-        // }
-        // if (solenoidTimer.hasElapsed(4) && (outT == true)){
-        //     audioPub.set(0.0);
-        //     outT = false;
-        //     creeperSolenoid.set(outT);
-        // }
+        if (solenoidTimer.hasElapsed(2) && (start == false)){
+            outT = true;
+            start = true;
+            creeperSolenoid.set(outT);
+            audioPub.set(3.0);
+        }
+        if (solenoidTimer.hasElapsed(4) && (outT == true)){
+            audioPub.set(0.0);
+            outT = false;
+            creeperSolenoid.set(outT);
+        }
         if (solenoidTimer.hasElapsed(13) && (soundstarted == false)){
             audioPub.set(1.0);
             soundstarted = true;
@@ -62,6 +65,7 @@ public class ErinandTanmayMech extends SubsystemBase{
             audioPub.set(0.0);
             out = false;
             outT = false;
+            start = false;
             soundstarted = false;
         }
 
