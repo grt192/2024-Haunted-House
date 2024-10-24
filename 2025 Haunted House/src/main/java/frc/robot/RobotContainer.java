@@ -37,6 +37,12 @@ public class RobotContainer {
   //TOP LEFT WINDOW
   private final SolenoidMech justinMech = new SolenoidMech(pcm2.makeSolenoid(justinPort), 3, 7, 0.7);
 
+
+  private final SolenoidMech kiessMech;
+
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  public RobotContainer() {
+    kiessMech = new SolenoidMech(pcm2.makeSolenoid(3), 3, 5);
   //Front Porch, using PCM1
   // private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
   private final ErinandTanmayMech erinandtanmayMech; 
@@ -50,7 +56,6 @@ public class RobotContainer {
     // Configure the trigger bindings
 
     erinandtanmayMech = new ErinandTanmayMech(pcm1.makeSolenoid(5), pcm1.makeSolenoid(1));
-
   }
 
 
