@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.subsystems.ErinandTanmayMech;
 import frc.robot.subsystems.SolenoidMech;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.MeniMech;
 import frc.robot.subsystems.SolenoidMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 
@@ -19,6 +20,16 @@ import edu.wpi.first.wpilibj.PneumaticsControlModule;
 public class RobotContainer {
 
   // PCM1 is floor 1 of haunted house, PCM2 is floor 2
+    private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
+    private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
+
+    private final MeniMech meniMech;
+
+    /** The container for the robot. Contains subsystems, OI devices, and commands. */
+    public RobotContainer() {
+        meniMech = new MeniMech(pcm1.makeSolenoid(3), pcm1.makeSolenoid(4));
+
+    }
   private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
   private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
   public static final int justinPort = 2;
@@ -37,6 +48,7 @@ public class RobotContainer {
     erinandtanmayMech = new ErinandTanmayMech(pcm1.makeSolenoid(5), pcm1.makeSolenoid(1));
 
   }
+
 
 
 }
