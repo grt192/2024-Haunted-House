@@ -43,25 +43,25 @@ public class ErinandTanmayMech extends SubsystemBase{
         if (solenoidTimer.hasElapsed(2) && (start == false)){
             outT = true;
             start = true;
-            creeperSolenoid.set(outT);
+            amongusSolenoid.set(outT);
             audioPub.set(3.0);
         }
         if (solenoidTimer.hasElapsed(4) && (outT == true)){
             audioPub.set(0.0);
             outT = false;
-            creeperSolenoid.set(outT);
+            amongusSolenoid.set(outT);
         }
         if (solenoidTimer.hasElapsed(13) && (soundstarted == false)){
             audioPub.set(1.0);
             soundstarted = true;
         }
         if (solenoidTimer.hasElapsed(15) && (out == false)){
-            creeperSolenoid.set(true);
+            // creeperSolenoid.set(true);
             audioPub.set(2.0);
             out = true;
         }
         if (solenoidTimer.advanceIfElapsed(18)){
-            creeperSolenoid.set(false);
+            // creeperSolenoid.set(false);
             audioPub.set(0.0);
             out = false;
             outT = false;

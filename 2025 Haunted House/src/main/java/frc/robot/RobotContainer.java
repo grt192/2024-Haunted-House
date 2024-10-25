@@ -8,6 +8,7 @@ import frc.robot.subsystems.ErinandTanmayMech;
 import frc.robot.subsystems.SolenoidMech;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.subsystems.MeniMech;
+import frc.robot.subsystems.MishaSpiderMech;
 import frc.robot.subsystems.SolenoidMech;
 import edu.wpi.first.wpilibj.PneumaticsControlModule;
 
@@ -23,41 +24,26 @@ public class RobotContainer {
     private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
     private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
 
+    public static final int justinPort = 2;
+    private final SolenoidMech justinMech = new SolenoidMech(pcm2.makeSolenoid(justinPort), 3, 7, 0.7);
     private final MeniMech meniMech;
+    private final SolenoidMech hamzaMech;
+    private final SolenoidMech kiessMech;
 
-    /** The container for the robot. Contains subsystems, OI devices, and commands. */
-    public RobotContainer() {
-        meniMech = new MeniMech(pcm1.makeSolenoid(3), pcm1.makeSolenoid(4));
+    private final ErinandTanmayMech erinandtanmayMech; 
 
-    }
-  private final PneumaticsControlModule pcm1 = new PneumaticsControlModule(0);
-  private final PneumaticsControlModule pcm2 = new PneumaticsControlModule(1);
-  public static final int justinPort = 2;
-
-  //TOP LEFT WINDOW
-  private final SolenoidMech justinMech = new SolenoidMech(pcm2.makeSolenoid(justinPort), 3, 7, 0.7);
-
-
-  //Left Bottom Window, using PCM1
-  private final SolenoidMech hamzaMech = new SolenoidMech(
-    pcm1.makeSolenoid(2), 2, 5);
-
-  private final SolenoidMech kiessMech;
-
+    private final MishaSpiderMech mishaspiderMech;
+    private final SolenoidMech mishalegMech;
+    private final int satvikPort = 0;
+    private final SolenoidMech satvikMech = new SolenoidMech(pcm1.makeSolenoid(satvikPort), 4, 5);
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    hamzaMech = new SolenoidMech(pcm1.makeSolenoid(2), 2, 5);
+    meniMech = new MeniMech(pcm1.makeSolenoid(3), pcm1.makeSolenoid(4));
     kiessMech = new SolenoidMech(pcm2.makeSolenoid(3), 3, 5);
-  //Front Porch, using PCM1
-  // private final SolenoidMech tanmayMech = new SolenoidMech(pcm1.makeSolenoid(tanmayPort), 5, 5);
-  private final ErinandTanmayMech erinandtanmayMech; 
-
-  private final SolenoidMech mishaspiderMech;
-  private final SolenoidMech mishalegMech;
-
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-    mishaspiderMech = new SolenoidMech(pcm2.makeSolenoid(0), 3, 3, 1);
-    mishalegMech = new SolenoidMech(pcm2.makeSolenoid(1), 1, 1, 0.5);
+    mishaspiderMech = new MishaSpiderMech(pcm2.makeDoubleSolenoid(0, 4), 3, 3, 1);
+    mishalegMech = new SolenoidMech(pcm2.makeSolenoid(1), 1, 1);
     // Configure the trigger bindings
 
     erinandtanmayMech = new ErinandTanmayMech(pcm1.makeSolenoid(5), pcm1.makeSolenoid(1));
